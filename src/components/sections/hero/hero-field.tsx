@@ -3,6 +3,8 @@
 import { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 
+import type { Dictionary } from "@/i18n/dictionaries";
+
 const SPACING = 24; // px between dots
 const RADIUS = 220; // px — size of the pointer "lens"
 const INK = "238, 235, 228";
@@ -16,7 +18,7 @@ const ACCENT = "224, 74, 30";
  * Rendered to a single <canvas>; paused when off-screen. With reduced
  * motion, a single still frame is drawn.
  */
-export function HeroField() {
+export function HeroField({ dict }: { dict: Dictionary["hero"]["field"] }) {
   const figureRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -152,17 +154,14 @@ export function HeroField() {
 
       <div className="pointer-events-none absolute inset-0 flex shell flex-col justify-between py-(--gutter)">
         <div className="flex justify-between text-label text-mute-dark">
-          <span>Fig. 01</span>
-          <span>Interface / Material</span>
+          <span>{dict.figure}</span>
+          <span>{dict.caption}</span>
         </div>
 
         <figcaption className="grid-shell items-end">
-          <p className="col-span-6 max-w-[12ch] text-title md:col-span-7">
-            Precision you can feel.
-          </p>
+          <p className="col-span-6 max-w-[12ch] text-title md:col-span-7">{dict.title}</p>
           <p className="col-span-6 mt-6 max-w-[34ch] text-body text-mute-dark md:col-span-4 md:col-start-9 md:mt-0">
-            Every detail on screen is engineered — spacing, timing, the way an interface answers
-            your hand. Move your cursor across the field.
+            {dict.description}
           </p>
         </figcaption>
       </div>

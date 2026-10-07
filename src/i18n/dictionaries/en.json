@@ -1,0 +1,230 @@
+{
+  "site": {
+    "role": "Frontend Developer",
+    "location": "Serbia",
+    "description": "Savan Oljaca is a frontend developer from Serbia with 5+ years of experience building fast, considered websites and digital products with React, Next.js and modern tooling.",
+    "availability": "Available for new projects",
+    "basedIn": "Based in {location}"
+  },
+  "common": {
+    "skipToContent": "Skip to content",
+    "backToTop": "Back to top",
+    "placeholder": "Placeholder"
+  },
+  "nav": {
+    "label": "Primary",
+    "mobileLabel": "Mobile",
+    "work": "Work",
+    "about": "About",
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Close",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "homeLink": "{name}, {role} — back to top"
+  },
+  "languageSwitcher": {
+    "label": "Language"
+  },
+  "hero": {
+    "ariaLabel": "Introduction",
+    "tagline": "Creative frontend development",
+    "experience": "{years} years of experience",
+    "localTime": "Local time in {location}",
+    "statement": "I build digital products that feel considered — precise in design, fast in engineering, smooth in motion.",
+    "scroll": "Scroll to explore",
+    "field": {
+      "figure": "Fig. 01",
+      "caption": "Interface / Material",
+      "title": "Precision you can feel.",
+      "description": "Every detail on screen is engineered — spacing, timing, the way an interface answers your hand. Move your cursor across the field."
+    }
+  },
+  "about": {
+    "label": "About",
+    "intro": [
+      {
+        "text": "For more than five years I've been turning ideas into websites and digital products — from"
+      },
+      { "text": "React and Next.js", "emphasis": true },
+      { "text": "applications to" },
+      { "text": "Shopify", "emphasis": true },
+      { "text": "storefronts," },
+      { "text": "WordPress", "emphasis": true },
+      { "text": "and" },
+      { "text": "Webflow", "emphasis": true },
+      { "text": "sites, and" },
+      { "text": "FlutterFlow", "emphasis": true },
+      { "text": "apps." }
+    ],
+    "craft": {
+      "before": "I work in the layer where design meets code: typography that holds up at every size, interactions that feel natural, and performance nobody has to think about. Most of what I build connects to real data through",
+      "highlight": "REST APIs",
+      "after": "."
+    },
+    "workflow": {
+      "before": "Today my workflow includes",
+      "highlight": "AI-assisted development with Claude Code",
+      "after": "— a faster way to explore and iterate, without ever handing over the engineering judgment."
+    },
+    "facts": {
+      "discipline": "Discipline",
+      "experience": "Experience",
+      "experienceValue": "{years} years",
+      "basedIn": "Based in",
+      "interests": "Interests",
+      "interestsValue": "Creative development, UI, motion, performance"
+    }
+  },
+  "work": {
+    "label": "Selected work",
+    "title": "Selected Work",
+    "count": "{count} projects",
+    "intro": "A selection of projects across commerce, content and product — built with care from the first line of code to the final interaction.",
+    "role": "Role",
+    "stack": "Stack",
+    "year": "Year",
+    "view": "View",
+    "sample": "Sample",
+    "viewProject": "View project",
+    "projects": {
+      "headless-storefront": {
+        "title": "Headless Storefront",
+        "summary": "A headless commerce experience pairing a Shopify backend with a fast, custom-built Next.js storefront.",
+        "role": "Frontend Development",
+        "imageAlt": "Placeholder image: curved orange architectural facade against a blue sky"
+      },
+      "editorial-platform": {
+        "title": "Editorial Platform",
+        "summary": "A content-driven publishing site with a flexible WordPress backend and a carefully tuned reading experience.",
+        "role": "Frontend Development",
+        "imageAlt": "Placeholder image: glass building facade with a repeating angular pattern"
+      },
+      "marketing-site": {
+        "title": "Marketing Website",
+        "summary": "A motion-rich marketing website built in Webflow, with custom interactions layered on top.",
+        "role": "Design & Development",
+        "imageAlt": "Placeholder image: white geometric building with angled glass volumes"
+      },
+      "product-prototype": {
+        "title": "Product Prototype",
+        "summary": "A mobile product prototype taken from idea to clickable app in FlutterFlow, connected to live data through REST APIs.",
+        "role": "Frontend Development",
+        "imageAlt": "Placeholder image: blue and white striped curved architecture viewed from below"
+      }
+    }
+  },
+  "capabilities": {
+    "label": "Capabilities",
+    "title": "The tools behind the work.",
+    "groups": [
+      {
+        "label": "Build",
+        "items": [
+          { "name": "Next.js", "note": "Routing, rendering & performance" },
+          { "name": "React", "note": "Component architecture & state" },
+          { "name": "JavaScript", "note": "The foundation underneath it all" },
+          { "name": "REST APIs", "note": "Integrating data & services" }
+        ]
+      },
+      {
+        "label": "Style",
+        "items": [
+          { "name": "Tailwind CSS", "note": "Utility-first design systems" },
+          { "name": "SCSS", "note": "Structured, maintainable styles" }
+        ]
+      },
+      {
+        "label": "Platforms",
+        "items": [
+          { "name": "Shopify", "note": "Commerce & storefronts" },
+          { "name": "WordPress", "note": "Content-driven websites" },
+          { "name": "Webflow", "note": "Visual development & CMS" },
+          { "name": "FlutterFlow", "note": "Cross-platform app prototypes" }
+        ]
+      },
+      {
+        "label": "Workflow",
+        "isAI": true,
+        "items": [
+          { "name": "Claude Code", "note": "Agentic coding in the terminal" },
+          { "name": "AI-assisted development", "note": "Faster loops, same standards" }
+        ]
+      }
+    ]
+  },
+  "workflow": {
+    "label": "Modern workflow",
+    "titleLead": "AI doesn't replace engineering judgment.",
+    "titleTail": "It sharpens the workflow around it.",
+    "body": {
+      "highlight": "Claude Code",
+      "text": "is part of my daily workflow. It helps me move quickly through the parts of a project that benefit from speed — while architecture, code quality and every final decision stay with me. Nothing ships that I haven't read, understood and would put my name on."
+    },
+    "loopLabel": "How a change moves through my workflow",
+    "loop": [
+      { "label": "Intent", "owner": "Me" },
+      { "label": "Draft", "owner": "Claude Code", "isAI": true },
+      { "label": "Review & own", "owner": "Me" }
+    ],
+    "uses": [
+      {
+        "title": "Rapid prototyping",
+        "description": "Turning an idea into something clickable in hours, so decisions are made on real interfaces."
+      },
+      {
+        "title": "Exploration",
+        "description": "Comparing approaches and unfamiliar APIs quickly before committing to one."
+      },
+      {
+        "title": "Refactoring",
+        "description": "Handling wide, mechanical changes while I define the structure and review every diff."
+      },
+      {
+        "title": "Debugging",
+        "description": "A second pair of eyes for tracing issues, with conclusions verified against the code."
+      },
+      {
+        "title": "Documentation",
+        "description": "Keeping READMEs, comments and handover notes in step with the code."
+      },
+      {
+        "title": "Acceleration",
+        "description": "Less time on boilerplate, more time on the details that make a product feel right."
+      }
+    ]
+  },
+  "experience": {
+    "label": "Experience",
+    "years": "Years building for the web.",
+    "entries": [
+      {
+        "company": "Company name",
+        "role": "Role title",
+        "period": "20XX — Present",
+        "summary": "A short description of responsibilities and the kind of work delivered.",
+        "isPlaceholder": true
+      },
+      {
+        "company": "Company name",
+        "role": "Role title",
+        "period": "20XX — 20XX",
+        "summary": "A short description of responsibilities and the kind of work delivered.",
+        "isPlaceholder": true
+      },
+      {
+        "company": "Company name",
+        "role": "Role title",
+        "period": "20XX — 20XX",
+        "summary": "A short description of responsibilities and the kind of work delivered.",
+        "isPlaceholder": true
+      }
+    ]
+  },
+  "contact": {
+    "label": "Contact",
+    "prompt": "Have a project in mind?",
+    "titleLead": "Let's build",
+    "titleTail": "something."
+  }
+}

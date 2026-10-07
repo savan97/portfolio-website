@@ -4,14 +4,25 @@ import { useCallback, useRef, useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 
 import { navigation, site } from "@/content/site";
+import type { Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries";
+import { format } from "@/i18n/format";
 import { EASE_OUT_EXPO } from "@/lib/motion";
+import { LanguageSwitcher } from "./language-switcher";
 import { MobileMenu } from "./mobile-menu";
+
+export type HeaderDictionary = Pick<Dictionary, "site" | "nav" | "languageSwitcher">;
+
+type HeaderProps = {
+  locale: Locale;
+  dict: HeaderDictionary;
+};
 
 /**
  * Fixed header. Uses `mix-blend-difference` so it stays legible over both
  * light and dark sections, and tucks away while scrolling down.
  */
-export function Header() {
+export function Header({ locale, dict }: HeaderProps) {
   const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -38,28 +49,31 @@ export function Header() {
           <a
             href="#top"
             className="col-span-4 text-[0.9375rem] leading-tight font-medium tracking-tight md:col-span-3"
-            aria-label={`${site.name}, ${site.role} — back to top`}
+            aria-label={format(dict.nav.homeLink, { name: site.name, role: dict.site.role })}
             onClick={() => menuOpen && setMenuOpen(false)}
           >
             {site.name}
-            <span className="block opacity-60">{site.role}</span>
+            <span className="block opacity-60">{dict.site.role}</span>
           </a>
 
           <p className="col-span-3 hidden text-label opacity-60 lg:col-start-6 lg:block">
-            Based in {site.location}
+            {format(dict.site.basedIn, { location: dict.site.location })}
           </p>
 
-          <nav aria-label="Primary" className="col-span-4 col-start-9 hidden justify-end md:flex">
-            <ul className="flex gap-8 text-[0.9375rem] font-medium tracking-tight">
-              {navigation.map((item) => (
-                <li key={item.href}>
-                  <a href={item.href} className="link-underline pb-0.5">
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <div className="col-span-4 col-start-9 hidden items-center justify-end gap-8 text-[0.9375rem] font-medium tracking-tight md:flex">
+            <nav aria-label={dict.nav.label}>
+              <ul className="flex gap-8">
+                {navigation.map((item) => (
+                  <li key={item.href}>
+                    <a href={item.href} className="link-underline pb-0.5">
+                      {dict.nav[item.key]}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            <LanguageSwitcher locale={locale} label={dict.languageSwitcher.label} />
+          </div>
 
           <button
             ref={menuButtonRef}
@@ -74,16 +88,16 @@ export function Header() {
                 className="block transition-transform duration-500 ease-out-expo"
                 style={{ transform: menuOpen ? "translateY(-100%)" : "translateY(0)" }}
               >
-                <span className="block">Menu</span>
-                <span className="block">Close</span>
+                <span className="block">{dict.nav.menu}</span>
+                <span className="block">{dict.nav.close}</span>
               </span>
             </span>
-            <span className="sr-only">{menuOpen ? "Close menu" : "Open menu"}</span>
+            <span className="sr-only">{menuOpen ? dict.nav.closeMenu : dict.nav.openMenu}</span>
           </button>
         </div>
       </motion.header>
 
-      <MobileMenu open={menuOpen} onClose={closeMenu} />
+      <MobileMenu open={menuOpen} onClose={closeMenu} locale={locale} dict={dict} />
     </>
   );
 }

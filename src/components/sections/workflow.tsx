@@ -1,17 +1,14 @@
-import { workflowLoop, workflowUses } from "@/content/workflow";
+import { getDictionary, type Dictionary } from "@/i18n/dictionaries";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionLabel } from "@/components/ui/section-label";
 import { SplitReveal } from "@/components/ui/split-reveal";
 
 /** The intent → draft → review loop, showing who owns each step. */
-function WorkflowLoop() {
+function WorkflowLoop({ dict }: { dict: Dictionary["workflow"] }) {
   return (
-    <ol
-      className="grid grid-cols-3 border-y border-line-dark"
-      aria-label="How a change moves through my workflow"
-    >
-      {workflowLoop.map((step, i) => {
-        const isAI = step.owner !== "Me";
+    <ol className="grid grid-cols-3 border-y border-line-dark" aria-label={dict.loopLabel}>
+      {dict.loop.map((step, i) => {
+        const isAI = Boolean(step.isAI);
         return (
           <li
             key={step.label}
@@ -33,7 +30,9 @@ function WorkflowLoop() {
   );
 }
 
-export function Workflow() {
+export async function Workflow() {
+  const { workflow: dict } = await getDictionary();
+
   return (
     <section
       id="workflow"
@@ -43,19 +42,15 @@ export function Workflow() {
       <div className="shell">
         <div className="grid-shell gap-y-10">
           <SectionLabel index="04" className="col-span-6 text-mute-dark md:col-span-3">
-            Modern workflow
+            {dict.label}
           </SectionLabel>
 
           <div className="col-span-6 md:col-span-9">
             <h2 id="workflow-title" className="text-headline">
+              <SplitReveal as="span" text={dict.titleLead} className="block" />
               <SplitReveal
                 as="span"
-                text="AI doesn't replace engineering judgment."
-                className="block"
-              />
-              <SplitReveal
-                as="span"
-                text="It sharpens the workflow around it."
+                text={dict.titleTail}
                 className="block text-mute-dark"
                 delay={0.25}
               />
@@ -66,20 +61,17 @@ export function Workflow() {
         <div className="mt-16 grid-shell gap-y-12 md:mt-28">
           <Reveal className="col-span-6 md:col-span-4 md:col-start-4">
             <p className="text-body text-mute-dark">
-              <span className="text-paper">Claude Code</span> is part of my daily workflow. It helps
-              me move quickly through the parts of a project that benefit from speed — while
-              architecture, code quality and every final decision stay with me. Nothing ships that I
-              haven&apos;t read, understood and would put my name on.
+              <span className="text-paper">{dict.body.highlight}</span> {dict.body.text}
             </p>
           </Reveal>
 
           <Reveal className="col-span-6 md:col-span-5 md:col-start-8 md:self-end" delay={0.1}>
-            <WorkflowLoop />
+            <WorkflowLoop dict={dict} />
           </Reveal>
         </div>
 
         <ul className="mt-20 grid gap-x-(--gutter) md:mt-32 md:grid-cols-3">
-          {workflowUses.map((use, i) => (
+          {dict.uses.map((use, i) => (
             <Reveal
               key={use.title}
               as="li"

@@ -1,11 +1,14 @@
 import { site } from "@/content/site";
+import { getDictionary } from "@/i18n/dictionaries";
 import { ArrowUpRight } from "@/components/ui/icons";
 import { Magnetic } from "@/components/ui/magnetic";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionLabel } from "@/components/ui/section-label";
 import { SplitReveal } from "@/components/ui/split-reveal";
 
-export function Contact() {
+export async function Contact() {
+  const dict = await getDictionary();
+
   return (
     <section
       id="contact"
@@ -13,16 +16,16 @@ export function Contact() {
       className="flex min-h-svh shell flex-col justify-between border-t border-line pt-6 pb-(--section-space)"
     >
       <SectionLabel index="06" className="text-mute">
-        Contact
+        {dict.contact.label}
       </SectionLabel>
 
       <div className="py-20">
-        <p className="mb-8 text-label text-mute">Have a project in mind?</p>
+        <p className="mb-8 text-label text-mute">{dict.contact.prompt}</p>
         <h2 id="contact-title" className="text-display max-md:text-[16.5vw]">
-          <SplitReveal as="span" text="Let's build" className="block" stagger={0.08} />
+          <SplitReveal as="span" text={dict.contact.titleLead} className="block" stagger={0.08} />
           <SplitReveal
             as="span"
-            text="something."
+            text={dict.contact.titleTail}
             className="block md:pl-[16.66%]"
             delay={0.16}
             stagger={0.08}

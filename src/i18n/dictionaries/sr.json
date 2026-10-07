@@ -1,0 +1,230 @@
+{
+  "site": {
+    "role": "Frontend developer",
+    "location": "Srbija",
+    "description": "Savan Oljaca je frontend developer iz Srbije sa više od 5 godina iskustva u izradi brzih, promišljenih sajtova i digitalnih proizvoda uz React, Next.js i moderne alate.",
+    "availability": "Dostupan za nove projekte",
+    "basedIn": "Lokacija: {location}"
+  },
+  "common": {
+    "skipToContent": "Preskoči na sadržaj",
+    "backToTop": "Nazad na vrh",
+    "placeholder": "Privremeno"
+  },
+  "nav": {
+    "label": "Glavna navigacija",
+    "mobileLabel": "Mobilna navigacija",
+    "work": "Radovi",
+    "about": "O meni",
+    "contact": "Kontakt",
+    "menu": "Meni",
+    "close": "Zatvori",
+    "openMenu": "Otvori meni",
+    "closeMenu": "Zatvori meni",
+    "homeLink": "{name}, {role} — nazad na vrh"
+  },
+  "languageSwitcher": {
+    "label": "Jezik"
+  },
+  "hero": {
+    "ariaLabel": "Uvod",
+    "tagline": "Kreativni frontend development",
+    "experience": "{years} godina iskustva",
+    "localTime": "Lokalno vreme, {location}",
+    "statement": "Pravim digitalne proizvode koji deluju promišljeno — precizni u dizajnu, brzi u izvedbi, glatki u pokretu.",
+    "scroll": "Skroluj dalje",
+    "field": {
+      "figure": "Sl. 01",
+      "caption": "Interfejs / Materijal",
+      "title": "Preciznost koja se oseća.",
+      "description": "Svaki detalj na ekranu je osmišljen — razmaci, tajming, način na koji interfejs odgovara na tvoj pokret. Pomeraj kursor preko polja."
+    }
+  },
+  "about": {
+    "label": "O meni",
+    "intro": [
+      {
+        "text": "Već više od pet godina pretvaram ideje u sajtove i digitalne proizvode — od"
+      },
+      { "text": "React i Next.js", "emphasis": true },
+      { "text": "aplikacija do" },
+      { "text": "Shopify", "emphasis": true },
+      { "text": "prodavnica," },
+      { "text": "WordPress", "emphasis": true },
+      { "text": "i" },
+      { "text": "Webflow", "emphasis": true },
+      { "text": "sajtova, i" },
+      { "text": "FlutterFlow", "emphasis": true },
+      { "text": "aplikacija." }
+    ],
+    "craft": {
+      "before": "Radim na mestu gde se dizajn susreće sa kodom: tipografija koja izdržava na svakoj veličini, interakcije koje deluju prirodno i performanse o kojima niko ne mora da razmišlja. Većina onoga što pravim povezana je sa stvarnim podacima preko",
+      "highlight": "REST API-ja",
+      "after": "."
+    },
+    "workflow": {
+      "before": "Danas moj način rada uključuje",
+      "highlight": "razvoj uz pomoć AI-ja, sa Claude Code-om",
+      "after": "— brži način da istražujem i iteriram, bez prepuštanja inženjerske procene."
+    },
+    "facts": {
+      "discipline": "Oblast",
+      "experience": "Iskustvo",
+      "experienceValue": "{years} godina",
+      "basedIn": "Lokacija",
+      "interests": "Interesovanja",
+      "interestsValue": "Kreativni development, UI, animacija, performanse"
+    }
+  },
+  "work": {
+    "label": "Izabrani radovi",
+    "title": "Izabrani radovi",
+    "count": "Broj projekata: {count}",
+    "intro": "Izbor projekata iz oblasti e-commerce-a, sadržaja i proizvoda — rađenih pažljivo, od prve linije koda do poslednje interakcije.",
+    "role": "Uloga",
+    "stack": "Tehnologije",
+    "year": "Godina",
+    "view": "Pogledaj",
+    "sample": "Primer",
+    "viewProject": "Pogledaj projekat",
+    "projects": {
+      "headless-storefront": {
+        "title": "Headless prodavnica",
+        "summary": "Headless e-commerce iskustvo koje spaja Shopify backend sa brzim, namenski izrađenim Next.js frontendom.",
+        "role": "Frontend development",
+        "imageAlt": "Privremena slika: zakrivljena narandžasta fasada naspram plavog neba"
+      },
+      "editorial-platform": {
+        "title": "Editorijalna platforma",
+        "summary": "Sajt za objavljivanje sadržaja sa fleksibilnim WordPress backendom i pažljivo podešenim iskustvom čitanja.",
+        "role": "Frontend development",
+        "imageAlt": "Privremena slika: staklena fasada zgrade sa ponavljajućim uglastim šablonom"
+      },
+      "marketing-site": {
+        "title": "Marketing sajt",
+        "summary": "Marketing sajt bogat animacijama, izrađen u Webflow-u, sa dodatnim prilagođenim interakcijama.",
+        "role": "Dizajn i development",
+        "imageAlt": "Privremena slika: bela geometrijska zgrada sa kosim staklenim volumenima"
+      },
+      "product-prototype": {
+        "title": "Prototip proizvoda",
+        "summary": "Prototip mobilnog proizvoda, od ideje do klikabilne aplikacije u FlutterFlow-u, povezan sa živim podacima preko REST API-ja.",
+        "role": "Frontend development",
+        "imageAlt": "Privremena slika: plavo-bela prugasta zakrivljena arhitektura viđena odozdo"
+      }
+    }
+  },
+  "capabilities": {
+    "label": "Veštine",
+    "title": "Alati iza mog rada.",
+    "groups": [
+      {
+        "label": "Izrada",
+        "items": [
+          { "name": "Next.js", "note": "Rutiranje, renderovanje i performanse" },
+          { "name": "React", "note": "Arhitektura komponenti i stanje" },
+          { "name": "JavaScript", "note": "Temelj ispod svega" },
+          { "name": "REST API", "note": "Integracija podataka i servisa" }
+        ]
+      },
+      {
+        "label": "Stil",
+        "items": [
+          { "name": "Tailwind CSS", "note": "Utility-first dizajn sistemi" },
+          { "name": "SCSS", "note": "Strukturirani stilovi, laki za održavanje" }
+        ]
+      },
+      {
+        "label": "Platforme",
+        "items": [
+          { "name": "Shopify", "note": "E-commerce i online prodavnice" },
+          { "name": "WordPress", "note": "Sajtovi zasnovani na sadržaju" },
+          { "name": "Webflow", "note": "Vizuelni development i CMS" },
+          { "name": "FlutterFlow", "note": "Prototipovi aplikacija za više platformi" }
+        ]
+      },
+      {
+        "label": "Način rada",
+        "isAI": true,
+        "items": [
+          { "name": "Claude Code", "note": "Agentsko programiranje u terminalu" },
+          { "name": "Razvoj uz AI", "note": "Brže iteracije, isti standardi" }
+        ]
+      }
+    ]
+  },
+  "workflow": {
+    "label": "Moderan način rada",
+    "titleLead": "AI ne zamenjuje inženjersku procenu.",
+    "titleTail": "Izoštrava način rada oko nje.",
+    "body": {
+      "highlight": "Claude Code",
+      "text": "je deo mog svakodnevnog rada. Pomaže mi da brzo prođem kroz delove projekta kojima brzina koristi — dok arhitektura, kvalitet koda i svaka konačna odluka ostaju na meni. Ništa ne ide u produkciju što nisam pročitao, razumeo i iza čega ne bih stao svojim imenom."
+    },
+    "loopLabel": "Kako izmena prolazi kroz moj proces rada",
+    "loop": [
+      { "label": "Namera", "owner": "Ja" },
+      { "label": "Nacrt", "owner": "Claude Code", "isAI": true },
+      { "label": "Pregled i odgovornost", "owner": "Ja" }
+    ],
+    "uses": [
+      {
+        "title": "Brzo prototipovanje",
+        "description": "Pretvaranje ideje u nešto klikabilno za nekoliko sati, kako bi se odluke donosile na stvarnim interfejsima."
+      },
+      {
+        "title": "Istraživanje",
+        "description": "Brzo poređenje pristupa i nepoznatih API-ja pre nego što se opredelim za jedan."
+      },
+      {
+        "title": "Refaktorisanje",
+        "description": "Obimne, mehaničke izmene, dok ja definišem strukturu i pregledam svaki diff."
+      },
+      {
+        "title": "Debagovanje",
+        "description": "Drugi par očiju pri traženju problema, uz zaključke proverene u samom kodu."
+      },
+      {
+        "title": "Dokumentacija",
+        "description": "README fajlovi, komentari i beleške za primopredaju usklađeni sa kodom."
+      },
+      {
+        "title": "Ubrzanje",
+        "description": "Manje vremena na šablonski kod, više vremena na detalje zbog kojih proizvod deluje kako treba."
+      }
+    ]
+  },
+  "experience": {
+    "label": "Iskustvo",
+    "years": "Godina rada na webu.",
+    "entries": [
+      {
+        "company": "Naziv kompanije",
+        "role": "Pozicija",
+        "period": "20XX — danas",
+        "summary": "Kratak opis odgovornosti i vrste posla.",
+        "isPlaceholder": true
+      },
+      {
+        "company": "Naziv kompanije",
+        "role": "Pozicija",
+        "period": "20XX — 20XX",
+        "summary": "Kratak opis odgovornosti i vrste posla.",
+        "isPlaceholder": true
+      },
+      {
+        "company": "Naziv kompanije",
+        "role": "Pozicija",
+        "period": "20XX — 20XX",
+        "summary": "Kratak opis odgovornosti i vrste posla.",
+        "isPlaceholder": true
+      }
+    ]
+  },
+  "contact": {
+    "label": "Kontakt",
+    "prompt": "Imaš projekat na umu?",
+    "titleLead": "Napravimo",
+    "titleTail": "nešto."
+  }
+}

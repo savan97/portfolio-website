@@ -1,10 +1,31 @@
-import { experience } from "@/content/experience";
 import { site } from "@/content/site";
+import { getDictionary } from "@/i18n/dictionaries";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionLabel } from "@/components/ui/section-label";
 import { cn } from "@/lib/cn";
 
-export function Experience() {
+type ExperienceEntry = {
+  company: string;
+  role: string;
+  period: string;
+  summary: string;
+  /** Optional highlights, rendered as a short list. */
+  highlights?: string[];
+  isPlaceholder?: boolean;
+};
+
+/**
+ * Professional experience, newest first — edit it in the dictionaries
+ * (`experience.entries`).
+ *
+ * TODO: every entry is a PLACEHOLDER. Replace with real roles — company,
+ * role, period and a short summary — and remove `isPlaceholder`.
+ * Do not add achievements or metrics that cannot be verified.
+ */
+export async function Experience() {
+  const dict = await getDictionary();
+  const experience: ExperienceEntry[] = dict.experience.entries;
+
   return (
     <section
       id="experience"
@@ -14,7 +35,7 @@ export function Experience() {
       <div className="grid-shell gap-y-12">
         <div className="col-span-6 md:col-span-5">
           <SectionLabel index="05" className="text-mute">
-            <span id="experience-title">Experience</span>
+            <span id="experience-title">{dict.experience.label}</span>
           </SectionLabel>
 
           <Reveal className="mt-8 md:sticky md:top-24">
@@ -29,7 +50,7 @@ export function Experience() {
                 +
               </span>
             </p>
-            <p className="mt-6 max-w-[14ch] text-lead">Years building for the web.</p>
+            <p className="mt-6 max-w-[14ch] text-lead">{dict.experience.years}</p>
           </Reveal>
         </div>
 
@@ -51,7 +72,7 @@ export function Experience() {
                   <span className="text-mute">— {entry.company}</span>
                   {entry.isPlaceholder && (
                     <span className="rounded-full border border-line px-2 py-0.5 text-label text-[0.625rem] tracking-normal">
-                      Placeholder
+                      {dict.common.placeholder}
                     </span>
                   )}
                 </h3>

@@ -4,18 +4,23 @@ import { useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
 import { navigation, site } from "@/content/site";
+import type { Locale } from "@/i18n/config";
 import { EASE_IN_OUT_QUART, EASE_OUT_EXPO } from "@/lib/motion";
+import type { HeaderDictionary } from "./header";
+import { LanguageSwitcher } from "./language-switcher";
 
 type MobileMenuProps = {
   open: boolean;
   onClose: () => void;
+  locale: Locale;
+  dict: HeaderDictionary;
 };
 
 /**
  * Full-screen mobile navigation. While open, the page behind it is made
  * inert and non-scrollable; Escape closes it and returns focus to the toggle.
  */
-export function MobileMenu({ open, onClose }: MobileMenuProps) {
+export function MobileMenu({ open, onClose, locale, dict }: MobileMenuProps) {
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
@@ -54,7 +59,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
           exit={{ clipPath: "inset(0 0 100% 0)" }}
           transition={{ duration: 0.8, ease: EASE_IN_OUT_QUART }}
         >
-          <nav aria-label="Mobile" className="flex flex-1 flex-col justify-center">
+          <nav aria-label={dict.nav.mobileLabel} className="flex flex-1 flex-col justify-center">
             <ul className="border-t border-line">
               {navigation.map((item, i) => (
                 <li key={item.href} className="overflow-hidden border-b border-line">
@@ -68,7 +73,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                     exit={{ y: "100%", transition: { duration: 0.4, ease: EASE_IN_OUT_QUART } }}
                     transition={{ duration: 1, ease: EASE_OUT_EXPO, delay: 0.25 + i * 0.07 }}
                   >
-                    {item.label}
+                    {dict.nav[item.key]}
                     <span className="text-label text-mute" aria-hidden="true">
                       0{i + 1}
                     </span>
@@ -92,6 +97,11 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                 {social.label}
               </a>
             ))}
+            <LanguageSwitcher
+              locale={locale}
+              label={dict.languageSwitcher.label}
+              className="col-span-2 mt-4 font-medium"
+            />
           </motion.div>
         </motion.div>
       )}

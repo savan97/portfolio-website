@@ -1,4 +1,5 @@
 import type { Project } from "@/content/projects";
+import type { Dictionary } from "@/i18n/dictionaries";
 import { ArrowUpRight } from "@/components/ui/icons";
 import { Reveal } from "@/components/ui/reveal";
 import { cn } from "@/lib/cn";
@@ -8,6 +9,7 @@ export type CaseLayout = "full" | "right" | "left";
 
 type ProjectCaseProps = {
   project: Project;
+  dict: Dictionary["work"];
   index: number;
   layout: CaseLayout;
 };
@@ -47,19 +49,20 @@ function MetaRow({ label, children }: { label: string; children: React.ReactNode
 }
 
 /** One editorial case-study block in the Selected Work section. */
-export function ProjectCase({ project, index, layout }: ProjectCaseProps) {
+export function ProjectCase({ project, dict, index, layout }: ProjectCaseProps) {
   const config = layouts[layout];
+  const text = dict.projects[project.slug];
   const number = String(index + 1).padStart(2, "0");
   const titleId = `project-${project.slug}`;
   const isFull = layout === "full";
 
   const media = (
     <ProjectMedia
-      src={project.image.src}
-      alt={project.image.alt}
+      src={project.image}
+      alt={text.imageAlt}
       sizes={config.sizes}
       className={cn(config.aspect, "w-full")}
-      cursorLabel={project.href ? "View" : undefined}
+      cursorLabel={project.href ? dict.view : undefined}
     />
   );
 
@@ -84,12 +87,12 @@ export function ProjectCase({ project, index, layout }: ProjectCaseProps) {
             <span>{project.stack[0]}</span>
             {project.isPlaceholder && (
               <span className="rounded-full border border-line px-2 py-0.5 text-[0.625rem]">
-                Sample
+                {dict.sample}
               </span>
             )}
           </p>
           <h3 id={titleId} className="mt-4 text-title">
-            {project.title}
+            {text.title}
           </h3>
         </Reveal>
 
@@ -100,12 +103,12 @@ export function ProjectCase({ project, index, layout }: ProjectCaseProps) {
             isFull && "col-span-6 md:col-span-4 md:col-start-9 md:mt-0 md:pt-2",
           )}
         >
-          <p className="max-w-[42ch] text-body text-mute">{project.summary}</p>
+          <p className="max-w-[42ch] text-body text-mute">{text.summary}</p>
 
           <dl className="mt-6 border-b border-line">
-            <MetaRow label="Role">{project.role}</MetaRow>
-            <MetaRow label="Stack">{project.stack.join(", ")}</MetaRow>
-            <MetaRow label="Year">{project.year}</MetaRow>
+            <MetaRow label={dict.role}>{text.role}</MetaRow>
+            <MetaRow label={dict.stack}>{project.stack.join(", ")}</MetaRow>
+            <MetaRow label={dict.year}>{project.year}</MetaRow>
           </dl>
 
           {project.href && (
@@ -113,9 +116,11 @@ export function ProjectCase({ project, index, layout }: ProjectCaseProps) {
               href={project.href}
               className="mt-6 inline-flex items-center gap-2 text-[0.9375rem] font-medium"
             >
-              <span className="link-underline link-underline-static pb-0.5">View project</span>
+              <span className="link-underline link-underline-static pb-0.5">
+                {dict.viewProject}
+              </span>
               <ArrowUpRight className="size-4 transition-transform duration-500 ease-out-expo group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              <span className="sr-only">: {project.title}</span>
+              <span className="sr-only">: {text.title}</span>
             </a>
           )}
         </Reveal>

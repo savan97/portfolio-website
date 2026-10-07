@@ -1,4 +1,6 @@
 import { site } from "@/content/site";
+import { getDictionary } from "@/i18n/dictionaries";
+import { format } from "@/i18n/format";
 import { ArrowDown } from "@/components/ui/icons";
 import { LocalTime } from "@/components/ui/local-time";
 import { HeroField } from "./hero-field";
@@ -22,12 +24,14 @@ export function RisingWord({ word, startDelay }: { word: string; startDelay: num
 
 export const fadeDelay = (ms: number) => ({ "--delay": `${ms}ms` }) as React.CSSProperties;
 
-export function Hero() {
+export async function Hero() {
+  const dict = await getDictionary();
+
   return (
     <>
       <section
         id="top"
-        aria-label="Introduction"
+        aria-label={dict.hero.ariaLabel}
         className="flex min-h-svh shell flex-col pt-[calc(var(--header-height)+2rem)] pb-(--gutter)"
       >
         {/* Meta row */}
@@ -35,10 +39,12 @@ export function Hero() {
           className="anim-fade-up grid-shell gap-y-1 text-label text-mute"
           style={fadeDelay(700)}
         >
-          <p className="col-span-3">Creative frontend development</p>
-          <p className="col-span-3 md:col-span-3">{site.yearsOfExperience} years of experience</p>
+          <p className="col-span-3">{dict.hero.tagline}</p>
+          <p className="col-span-3 md:col-span-3">
+            {format(dict.hero.experience, { years: site.yearsOfExperience })}
+          </p>
           <p className="col-span-6 md:col-span-3 md:col-start-10 md:text-right">
-            Local time in {site.location}{" "}
+            {format(dict.hero.localTime, { location: dict.site.location })}{" "}
             <LocalTime timeZone={site.timeZone} className="text-ink" />
           </p>
         </div>
@@ -48,7 +54,7 @@ export function Hero() {
           <div className="relative">
             <h1 className="text-display">
               <span className="sr-only">
-                {site.name}, {site.role}
+                {site.name}, {dict.site.role}
               </span>
               <span className="block">
                 <RisingWord word={site.firstName} startDelay={100} />
@@ -63,8 +69,7 @@ export function Hero() {
               className="anim-fade-up mt-10 max-w-[20ch] text-lead md:absolute md:top-0 md:right-0 md:mt-0 md:w-[calc((100%-var(--gutter)*11)/12*4+var(--gutter)*3)] md:max-w-none md:pt-[1vw] md:text-[clamp(1.25rem,1.8vw,2rem)] md:leading-[1.15]"
               style={fadeDelay(900)}
             >
-              I build digital products that feel considered — precise in design, fast in
-              engineering, smooth in motion.
+              {dict.hero.statement}
             </p>
           </div>
         </div>
@@ -76,19 +81,19 @@ export function Hero() {
         >
           <a href="#about" className="col-span-3 flex items-center gap-2 text-ink">
             <ArrowDown className="size-3.5" />
-            Scroll to explore
+            {dict.hero.scroll}
           </a>
-          {site.availability && (
+          {site.showAvailability && (
             <p className="col-span-3 flex items-center justify-end gap-2 md:col-start-10">
               <span className="anim-pulse size-1.5 rounded-full bg-accent" aria-hidden="true" />
-              {site.availability}
+              {dict.site.availability}
             </p>
           )}
         </div>
       </section>
 
       <div className="pb-(--section-space)">
-        <HeroField />
+        <HeroField dict={dict.hero.field} />
       </div>
     </>
   );
