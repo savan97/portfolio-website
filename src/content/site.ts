@@ -32,8 +32,7 @@ export const site = {
    */
   allowIndexing: process.env.ALLOW_INDEXING === "true",
 
-  // TODO: replace with the real email address.
-  email: "hello@example.com",
+  email: "savan.97.oljaca@gmail.com",
 
   // TODO: set to `false` to hide the availability badge. The text is in the dictionaries.
   showAvailability: true,

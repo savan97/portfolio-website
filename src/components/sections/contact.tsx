@@ -8,6 +8,7 @@ import { SplitReveal } from "@/components/ui/split-reveal";
 
 export async function Contact() {
   const dict = await getDictionary();
+  const [emailUser, emailDomain] = site.email.split("@");
 
   return (
     <section
@@ -35,13 +36,17 @@ export async function Contact() {
 
       <div className="grid-shell items-end gap-y-12">
         <Reveal className="col-span-6 md:col-span-6">
-          <Magnetic className="inline-block" strength={0.2}>
+          <Magnetic className="inline-block max-w-full" strength={0.2}>
             <a
               href={`mailto:${site.email}`}
               className="group/mail inline-flex items-center gap-4 rounded-full bg-ink py-5 pr-6 pl-8 text-[clamp(1.125rem,2vw,1.75rem)] font-medium tracking-[-0.02em] text-paper transition-colors duration-500 hover:bg-accent-deep focus-visible:bg-accent-deep md:py-7 md:pr-8 md:pl-10"
             >
-              {site.email}
-              <span className="grid size-9 place-items-center rounded-full bg-paper text-ink transition-transform duration-700 ease-out-expo group-hover/mail:rotate-45 md:size-11">
+              {/* On the narrowest phones the address may wrap, but only after the "@". */}
+              <span className="min-w-0">
+                {emailUser}@<wbr />
+                {emailDomain}
+              </span>
+              <span className="grid size-9 shrink-0 place-items-center rounded-full bg-paper text-ink transition-transform duration-700 ease-out-expo group-hover/mail:rotate-45 md:size-11">
                 <ArrowUpRight className="size-4" />
               </span>
             </a>
