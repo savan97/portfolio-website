@@ -25,6 +25,13 @@ export const site = {
   // TODO: replace with the production domain (or set NEXT_PUBLIC_SITE_URL).
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
 
+  /**
+   * Search engines are kept out (noindex, nofollow) unless the build runs
+   * with `ALLOW_INDEXING=true`. Set it only in the production environment,
+   * so staging and preview deployments never end up on Google.
+   */
+  allowIndexing: process.env.ALLOW_INDEXING === "true",
+
   // TODO: replace with the real email address.
   email: "hello@example.com",
 

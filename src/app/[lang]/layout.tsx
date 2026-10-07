@@ -60,7 +60,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description: dict.site.description,
     },
-    robots: { index: true, follow: true },
+    robots: site.allowIndexing ? { index: true, follow: true } : { index: false, follow: false },
   };
 }
 
