@@ -1,26 +1,282 @@
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------
+ * Design tokens
+ * ------------------------------------------------------------------ */
+
+@theme {
+  /* Colour — warm paper, near-black ink, one restrained accent. */
+  --color-paper: #eeebe4;
+  --color-paper-deep: #e4e0d6;
+  --color-ink: #131312;
+  --color-ink-soft: #1d1d1b;
+  --color-mute: #66625b; /* 5.1:1 on paper */
+  --color-mute-dark: #9a958c; /* 6.2:1 on ink */
+  --color-line: rgb(19 19 18 / 0.14);
+  --color-line-dark: rgb(238 235 228 / 0.14);
+  --color-line-faint: rgb(19 19 18 / 0.06); /* decorative only */
+  --color-accent: #e04a1e;
+  --color-accent-deep: #b93a13; /* 5.7:1 with paper text */
+
+  /* Type */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+
+  --breakpoint-xs: 30rem;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Page gutter and grid gap scale together. */
+  --gutter: clamp(1rem, 2.4vw, 2.5rem);
+  --section-space: clamp(6rem, 14vw, 13rem);
+  --header-height: 4.5rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ------------------------------------------------------------------
+ * Type scale
+ * ------------------------------------------------------------------ */
+
+@utility text-display {
+  /* Larger relative size on phones, where the name stacks on two lines. */
+  font-size: 25vw;
+  @media (width >= 48rem) {
+    font-size: clamp(4.5rem, 16.4vw, 19rem);
+  }
+  line-height: 0.8;
+  letter-spacing: -0.055em;
+  font-weight: 500;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@utility text-headline {
+  font-size: clamp(3rem, 8.4vw, 9rem);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  font-weight: 500;
+}
+
+@utility text-title {
+  font-size: clamp(2.25rem, 5vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  font-weight: 500;
+}
+
+@utility text-lead {
+  font-size: clamp(1.625rem, 3.2vw, 3.25rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  font-weight: 450;
+}
+
+@utility text-body {
+  font-size: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+}
+
+@utility text-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Page container: gutters on both sides, 12-column grid on wider screens. */
+@utility shell {
+  width: 100%;
+  padding-inline: var(--gutter);
+}
+
+@utility grid-shell {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  column-gap: var(--gutter);
+
+  @media (width >= 48rem) {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ------------------------------------------------------------------
+ * Base
+ * ------------------------------------------------------------------ */
+
+@layer base {
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    scroll-padding-top: 1rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background: var(--color-paper);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-paper);
+  }
+
+  :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  /* Inline links in body copy. */
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 100% 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.6s var(--ease-out-expo);
+  }
+
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1px;
+    background-position: 0% 100%;
+  }
+
+  .link-underline-static {
+    background-size: 100% 1px;
+    background-position: 0% 100%;
+  }
+
+  .link-underline-static:hover {
+    background-size: 0% 1px;
+    background-position: 100% 100%;
+  }
+}
+
+/* ------------------------------------------------------------------
+ * Motion primitives (CSS-only, so they run before hydration)
+ * ------------------------------------------------------------------ */
+
+@keyframes rise {
+  from {
+    transform: translate3d(0, 105%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 1rem, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.anim-rise {
+  animation: rise 1.2s var(--ease-out-expo) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+.anim-fade-up {
+  animation: fade-up 1s var(--ease-out-expo) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+.anim-marquee {
+  animation: marquee var(--duration, 40s) linear infinite;
+}
+
+.anim-pulse {
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .anim-marquee {
+    animation: none;
+  }
+}
+
+/* ------------------------------------------------------------------
+ * Hero grid (HeroGrid variant)
+ * ------------------------------------------------------------------ */
+
+@keyframes line-y {
+  from {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes line-x {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.anim-line-y {
+  transform-origin: top;
+  animation: line-y 1.6s var(--ease-in-out-quart) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+.anim-line-x {
+  transform-origin: left;
+  animation: line-x 1.8s var(--ease-in-out-quart) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+.anim-fade-in {
+  animation: fade-in 1.2s ease-out 1.4s both;
+}
+
+/* Lines fade out toward the bottom so the grid melts into the page. */
+.hero-grid {
+  mask-image: linear-gradient(to bottom, black 70%, transparent);
 }

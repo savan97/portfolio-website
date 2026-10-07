@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Savan Oljaca — Portfolio
 
-## Getting Started
-
-First, run the development server:
+Personal portfolio built with Next.js 16 (App Router, Cache Components), TypeScript, Tailwind CSS v4 and Motion.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
+npm run build      # production build (fully static)
+npm run lint
+npm run typecheck
+npm run format
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Editing content
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+All copy and data live in `src/content/` — components never hold content.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| File | What it controls |
+| --- | --- |
+| `site.ts` | Name, role, location, email, social links, availability badge, site URL |
+| `projects.ts` | Selected work (order, text, stack, links, images) |
+| `capabilities.ts` | Technology list, grouped by discipline |
+| `experience.ts` | Experience timeline |
+| `workflow.ts` | AI-assisted workflow section |
 
-## Learn More
+### Before launch — replace the placeholders
 
-To learn more about Next.js, take a look at the following resources:
+Search the codebase for `TODO` to find all of them:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Email, LinkedIn and GitHub** — `src/content/site.ts`
+- **Production URL** — set `NEXT_PUBLIC_SITE_URL` (used for canonical URLs, Open Graph, sitemap)
+- **Projects** — all four entries are samples marked `isPlaceholder: true` (shown with a "Sample" tag)
+- **Experience** — all entries are placeholders marked `isPlaceholder: true`
+- **Availability** — set `availability` to `null` in `site.ts` to hide the badge
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Adding a project
 
-## Deploy on Vercel
+1. Put the image in `src/assets/work/` (≈2400px wide, JPG/WebP).
+2. Import it at the top of `src/content/projects.ts`.
+3. Add an entry to the `projects` array.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Layouts alternate automatically (full-width → right → left, with the last project always full-width), so no layout settings are needed. The placeholder photos are from Unsplash.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Structure
+
+```
+src/
+  app/                  layout, page, metadata, OG image, icon, robots, sitemap
+  content/              editable data (see above)
+  components/
+    layout/             header, mobile menu, footer
+    sections/           one file (or folder) per page section
+    ui/                 reusable primitives: Reveal, SplitReveal, ScrollWords,
+                        Magnetic, Marquee, LocalTime, SectionLabel, icons
+    providers/          MotionConfig (respects prefers-reduced-motion)
+  lib/                  easing constants, class-name helper
+```
+
+Design tokens (colours, type scale, grid, easing) are defined in `src/app/globals.css`.
+
+## Notes
+
+- **Motion**: CSS for entrance, marquee and hover effects; Motion for scroll-linked and in-view reveals. Everything respects `prefers-reduced-motion`. The hero canvas pauses while off-screen.
+- **Accessibility**: skip link, semantic landmarks and headings, a mobile menu that handles focus (Escape closes it; the page behind is made `inert`), visible focus styles, and colour pairs checked for AA contrast.
+- **Cache Components**: anything time-based is either client-only after hydration (the local clock) or cached at build time (the footer year), so the page prerenders as fully static.
