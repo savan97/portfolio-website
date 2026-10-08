@@ -200,25 +200,22 @@
     "years": "Godina rada na webu.",
     "entries": [
       {
-        "company": "Naziv kompanije",
-        "role": "Pozicija",
-        "period": "20XX — danas",
-        "summary": "Kratak opis odgovornosti i vrste posla.",
-        "isPlaceholder": true
+        "company": "Librafire",
+        "role": "Senior Frontend Developer",
+        "period": "2025 — danas",
+        "summary": "Vodim frontend deo projekta od prve procene do lansiranja: postavljam arhitekturu, strukturu projekta i zajedničke komponente, i brinem o doslednom kvalitetu koda. AI-assisted development uz Claude Code je sastavni deo mog rada — za brže istraživanje, prototipove i iteracije, dok tehničke odluke ostaju moje. Sarađujem direktno sa dizajnerima i klijentima."
       },
       {
-        "company": "Naziv kompanije",
-        "role": "Pozicija",
-        "period": "20XX — 20XX",
-        "summary": "Kratak opis odgovornosti i vrste posla.",
-        "isPlaceholder": true
+        "company": "Librafire",
+        "role": "Medior Frontend Developer",
+        "period": "2022 — 2025",
+        "summary": "Samostalno sam razvijao kompletne funkcionalnosti i sajtove u React-u, Next.js-u, Shopify-ju, WordPress-u i Webflow-u — od preuzimanja dizajna do produkcije. Povezivao sam REST API-je, procenjivao sopstvene zadatke i aktivno učestvovao u code review-u i tehničkim odlukama."
       },
       {
-        "company": "Naziv kompanije",
-        "role": "Pozicija",
-        "period": "20XX — 20XX",
-        "summary": "Kratak opis odgovornosti i vrste posla.",
-        "isPlaceholder": true
+        "company": "Librafire",
+        "role": "Junior Frontend Developer",
+        "period": "2020 — 2022",
+        "summary": "Pretvarao sam dizajn u responzivne, precizne layoute i komponente za višekratnu upotrebu, ispravljao bagove i radio manje funkcionalnosti uz podršku seniora. Učio sam kako radi produkcijski tim: Git workflow, code review i testiranje na različitim browserima i uređajima."
       }
     ]
   },

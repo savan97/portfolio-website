@@ -16,10 +16,7 @@ type ExperienceEntry = {
 
 /**
  * Professional experience, newest first — edit it in the dictionaries
- * (`experience.entries`).
- *
- * TODO: every entry is a PLACEHOLDER. Replace with real roles — company,
- * role, period and a short summary — and remove `isPlaceholder`.
+ * (`experience.entries`). Mark unfinished entries with `isPlaceholder`.
  * Do not add achievements or metrics that cannot be verified.
  */
 export async function Experience() {

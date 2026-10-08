@@ -200,25 +200,22 @@
     "years": "Years building for the web.",
     "entries": [
       {
-        "company": "Company name",
-        "role": "Role title",
-        "period": "20XX — Present",
-        "summary": "A short description of responsibilities and the kind of work delivered.",
-        "isPlaceholder": true
+        "company": "Librafire",
+        "role": "Senior Frontend Developer",
+        "period": "2025 — Present",
+        "summary": "Owning frontend work from the first estimate to launch: shaping the architecture, setting up projects and shared components, and keeping quality consistent across the codebase. AI-assisted development with Claude Code is built into how I work — exploring, prototyping and iterating faster, while the engineering decisions stay mine. Working directly with designers and clients."
       },
       {
-        "company": "Company name",
-        "role": "Role title",
-        "period": "20XX — 20XX",
-        "summary": "A short description of responsibilities and the kind of work delivered.",
-        "isPlaceholder": true
+        "company": "Librafire",
+        "role": "Mid-level Frontend Developer",
+        "period": "2022 — 2025",
+        "summary": "Building complete features and sites independently across React, Next.js, Shopify, WordPress and Webflow — from design handoff to production. Integrating REST APIs, estimating my own work and taking an active part in code reviews and technical decisions."
       },
       {
-        "company": "Company name",
-        "role": "Role title",
-        "period": "20XX — 20XX",
-        "summary": "A short description of responsibilities and the kind of work delivered.",
-        "isPlaceholder": true
+        "company": "Librafire",
+        "role": "Junior Frontend Developer",
+        "period": "2020 — 2022",
+        "summary": "Turning designs into responsive, pixel-accurate layouts and reusable components, fixing bugs and shipping smaller features alongside senior developers. Learning the craft of a production team: Git workflows, code reviews and testing across browsers and devices."
       }
     ]
   },
