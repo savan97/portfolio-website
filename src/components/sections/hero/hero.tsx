@@ -3,12 +3,17 @@ import { getDictionary } from "@/i18n/dictionaries";
 import { format } from "@/i18n/format";
 import { ArrowDown } from "@/components/ui/icons";
 import { LocalTime } from "@/components/ui/local-time";
+import { HeroBadge } from "./hero-badge";
 import { HeroField } from "./hero-field";
 
-/** Splits a word into individually animated letters (decorative layer). */
+/**
+ * Splits a word into individually animated letters (decorative layer).
+ * The right padding gives back the space the negative letter-spacing takes
+ * from the last letter, so the mask doesn't clip it (e.g. the "v" in "Dev").
+ */
 export function RisingWord({ word, startDelay }: { word: string; startDelay: number }) {
   return (
-    <span aria-hidden="true" className="-mb-[0.2em] inline-flex overflow-hidden pb-[0.2em]">
+    <span aria-hidden="true" className="-mb-[0.2em] inline-flex overflow-hidden pr-[0.06em] pb-[0.2em]">
       {[...word].map((letter, i) => (
         <span
           key={i}
@@ -52,17 +57,29 @@ export async function Hero() {
         {/* Name + statement */}
         <div className="flex flex-1 flex-col justify-center py-12 md:py-16">
           <div className="relative">
-            <h1 className="text-display">
-              <span className="sr-only">
-                {site.name}, {dict.site.role}
-              </span>
-              <span className="block">
-                <RisingWord word={site.firstName} startDelay={100} />
-              </span>
-              <span className="flex md:justify-end">
-                <RisingWord word={site.heroSuffix} startDelay={300} />
-              </span>
-            </h1>
+            <div className="relative">
+              <h1 className="text-display">
+                <span className="sr-only">
+                  {site.name}, {dict.site.role}
+                </span>
+                <span className="block">
+                  <RisingWord word={site.firstName} startDelay={100} />
+                </span>
+                <span className="flex md:justify-end">
+                  <RisingWord word={site.heroSuffix} startDelay={300} />
+                </span>
+              </h1>
+
+              {/*
+                Badge between the two words (beside "Dev" on phones). On desktop the
+                position is in `em` of the display type, so it tracks the words as
+                they scale: centred horizontally just right of the middle, and
+                vertically on the seam between the two lines.
+              */}
+              <div className="absolute right-0 bottom-0 md:right-auto md:bottom-[calc(0.76em-var(--hero-badge-size)/2)] md:left-[calc(50%+0.39em-var(--hero-badge-size)/2)] md:text-display">
+                <HeroBadge dict={dict} />
+              </div>
+            </div>
 
             {/* On desktop the statement sits in the open space beside the first name. */}
             <p

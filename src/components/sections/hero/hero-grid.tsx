@@ -5,6 +5,7 @@ import { cn } from "@/lib/cn";
 import { ArrowDown } from "@/components/ui/icons";
 import { LocalTime } from "@/components/ui/local-time";
 import { fadeDelay, RisingWord } from "./hero";
+import { HeroBadge } from "./hero-badge";
 import { HeroField } from "./hero-field";
 
 const MOBILE_COLUMNS = 6;
@@ -87,17 +88,29 @@ export async function HeroGrid() {
         {/* Name + statement */}
         <div className="flex flex-1 flex-col justify-center py-12 md:py-16">
           <div className="relative">
-            <h1 className="text-display">
-              <span className="sr-only">
-                {site.name}, {dict.site.role}
-              </span>
-              <span className="block">
-                <RisingWord word={site.firstName} startDelay={100} />
-              </span>
-              <span className="flex md:justify-end">
-                <RisingWord word={site.heroSuffix} startDelay={300} />
-              </span>
-            </h1>
+            <div className="relative">
+              <h1 className="text-display">
+                <span className="sr-only">
+                  {site.name}, {dict.site.role}
+                </span>
+                <span className="block">
+                  <RisingWord word={site.firstName} startDelay={100} />
+                </span>
+                <span className="flex md:justify-end">
+                  <RisingWord word={site.heroSuffix} startDelay={300} />
+                </span>
+              </h1>
+
+              {/*
+                Badge between the two words (beside "Dev" on phones). On desktop the
+                position is in `em` of the display type, so it tracks the words as
+                they scale: centred horizontally just right of the middle, and
+                vertically on the seam between the two lines.
+              */}
+              <div className="absolute right-0 bottom-0 md:right-auto md:bottom-[calc(0.76em-var(--hero-badge-size)/2)] md:left-[calc(50%+0.39em-var(--hero-badge-size)/2)] md:text-display">
+                <HeroBadge dict={dict} />
+              </div>
+            </div>
 
             {/* On desktop the statement sits in the open space beside the first name. */}
             <p
